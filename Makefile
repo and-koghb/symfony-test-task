@@ -34,6 +34,8 @@ console: ## Login in console.
 
 install:
 	${DC_RUN} composer install
+	${DC_RUN} php bin/console doctrine:migrations:migrate
+	${DC_RUN} php bin/console doctrine:fixtures:load --group=test-task --append
 
 success-message:
 	@echo "You can now access the application at http://localhost:8337"
