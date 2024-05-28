@@ -47,6 +47,9 @@
             "migrations/.gitignore"
         ]
     },
+    "ibericode/vat-bundle": {
+        "version": "2.1.0"
+    },
     "sensio/framework-extra-bundle": {
         "version": "6.2",
         "recipe": {

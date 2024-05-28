@@ -74,7 +74,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
                 $user,
                 $userData['password']
             ));
-            $user->setEmailVerifiedAt(new \DateTime($userData['email_verified_at']));
+            $user->setEmailVerifiedAt($userData['email_verified_at'] ? new \DateTime($userData['email_verified_at']) : null);
             $currency = $manager->getRepository(Currency::class)->findOneBy(['code' => $userData['main_currency']]);
             if ($currency) {
                 $user->setMainCurrency($currency);

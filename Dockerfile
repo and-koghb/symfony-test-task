@@ -1,6 +1,6 @@
 FROM php:8.3-cli-alpine as sio_test
-RUN apk add --no-cache git zip bash postgresql-dev
-RUN docker-php-ext-install pdo_pgsql
+RUN apk add --no-cache git zip bash postgresql-dev libxml2-dev
+RUN docker-php-ext-install pdo_pgsql soap
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Setup php app user
