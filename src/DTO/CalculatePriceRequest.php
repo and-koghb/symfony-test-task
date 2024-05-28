@@ -19,12 +19,12 @@ class CalculatePriceRequest
         self::$entityManager = $entityManager;
     }
 
+    // @todo translate all error messages
     #[Assert\NotBlank(message: 'The product is required.')]
     #[Assert\Type(type: 'integer', message: 'The product must be an integer.')]
     #[Assert\Callback([CalculatePriceRequest::class, 'productExists'])]
     public $product;
 
-    // @todo translate error messages
     // @todo use VatNumber instead of VatNumberFormat to validate also existence
     #[Assert\NotBlank(message: "The tax number should not be blank.")]
     #[Assert\Type(type: 'string', message: 'The tax number must be a string.')]
@@ -56,7 +56,6 @@ class CalculatePriceRequest
         $result = $queryBuilder->getQuery()->getOneOrNullResult();
 
         if (!$result) {
-            // @todo translate the error message
             $context->buildViolation('The product does not exist.')
                 ->atPath('product')
                 ->addViolation();
