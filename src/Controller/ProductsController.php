@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\DTO\CalculatePriceRequest;
-use App\Entity\Currency;
 use App\Entity\Product;
 use App\Form\CalculatePriceType;
 use Doctrine\ORM\EntityManagerInterface;
