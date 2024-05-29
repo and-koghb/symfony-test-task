@@ -56,9 +56,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: "user")]
     private Collection $products;
 
+    #[ORM\OneToMany(targetEntity: Coupon::class, mappedBy: "user")]
+    private Collection $coupons;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->coupons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,7 +147,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getMainCurrency(): ?string
+    public function getMainCurrency(): ?Currency
     {
         return $this->mainCurrency;
     }
@@ -232,7 +236,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getCoupons(): Collection
+    {
+        return $this->coupons;
+    }
+
+    public function addCoupon(Coupon $coupon): self
+    {
+        if (!$this->coupons->contains($coupon)) {
+            $this->coupons[] = $coupon;
+            $coupon->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCoupon(Coupon $coupon): self
+    {
+        if ($this->coupons->removeElement($coupon)) {
+            if ($coupon->getUser() === $this) {
+                $coupon->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     public static function getAllStatuses(): array
+    {
+        // @todo translate for example using symfony/translation
+        return [
+            self::STATUS_ACTIVE => 'Active',
+            self::STATUS_INACTIVE => 'Inactive',
+        ];
+    }
+
+    public static function getAvailableStatuses(): array
     {
         // @todo translate for example using symfony/translation
         return [

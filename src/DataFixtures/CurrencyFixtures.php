@@ -20,7 +20,7 @@ class CurrencyFixtures extends Fixture implements FixtureGroupInterface
             return;
         }
 
-        $currencyData = [
+        $currenciesData = [
             [
                 'name' => 'US Dollar',
                 'code' => 'USD',
@@ -48,15 +48,15 @@ class CurrencyFixtures extends Fixture implements FixtureGroupInterface
             ],
         ];
 
-        foreach ($currencyData as $currencyDetails) {
+        foreach ($currenciesData as $currencyData) {
             $currency = new Currency();
-            $currency->setName($currencyDetails['name']);
-            $currency->setCode($currencyDetails['code']);
-            $currency->setSubUnit($currencyDetails['subUnit']);
-            $currency->setDecimals($currencyDetails['decimals']);
-            $currency->setSymbol($currencyDetails['symbol']);
-            $currency->setType($currencyDetails['type']);
-            $currency->setStatus($currencyDetails['status']);
+            $currency->setName($currencyData['name']);
+            $currency->setCode($currencyData['code']);
+            $currency->setSubUnit($currencyData['subUnit']);
+            $currency->setDecimals($currencyData['decimals']);
+            $currency->setSymbol($currencyData['symbol']);
+            $currency->setType($currencyData['type']);
+            $currency->setStatus($currencyData['status']);
             $manager->persist($currency);
         }
 

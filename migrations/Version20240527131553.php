@@ -21,6 +21,7 @@ final class Version20240527131553 extends AbstractMigration
     {
         if (!$schema->hasTable('currencies')) {
             $table = $schema->createTable('currencies');
+
             $table->addColumn('id', 'integer', ['autoincrement' => true]);
             $table->addColumn('name', 'string', ['length' => 125]);
             $table->addColumn('code', 'string', ['length' => 15]);
@@ -31,6 +32,7 @@ final class Version20240527131553 extends AbstractMigration
             $table->addColumn('status', 'smallint');
             $table->addColumn('created_at', 'datetime', ['notnull' => false]);
             $table->addColumn('updated_at', 'datetime', ['notnull' => false]);
+
             $table->setPrimaryKey(['id']);
             $table->addUniqueIndex(['name']);
             $table->addUniqueIndex(['code']);

@@ -18,6 +18,7 @@ final class Version20240527150039 extends AbstractMigration
     {
         if (!$schema->hasTable('users')) {
             $table = $schema->createTable('users');
+
             $table->addColumn('id', 'bigint', ['autoincrement' => true]);
             $table->addColumn('firstname', 'string', ['length' => 255, 'notnull' => false]);
             $table->addColumn('lastname', 'string', ['length' => 255, 'notnull' => false]);
@@ -29,6 +30,7 @@ final class Version20240527150039 extends AbstractMigration
             $table->addColumn('status', 'smallint');
             $table->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP']);
             $table->addColumn('updated_at', 'datetime', ['notnull' => false]);
+
             $table->setPrimaryKey(['id']);
             $table->addIndex(['firstname']);
             $table->addIndex(['lastname']);

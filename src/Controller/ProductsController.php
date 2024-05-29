@@ -6,8 +6,6 @@ use App\DTO\CalculatePriceRequest;
 use App\Entity\Product;
 use App\Form\CalculatePriceType;
 use Doctrine\ORM\EntityManagerInterface;
-use Ibericode\Vat\Countries;
-use Ibericode\Vat\Geolocator;
 use Ibericode\Vat\Rates;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,9 +22,7 @@ class ProductsController extends AbstractController
     public function __construct(
         EntityManagerInterface $entityManager,
         ValidatorInterface $validator,
-        Rates $rates,
-        Countries $countries,
-        Geolocator $geolocator,
+        Rates $rates
     ) {
         $this->entityManager = $entityManager;
         $this->validator = $validator;
