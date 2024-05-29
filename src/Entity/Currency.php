@@ -228,7 +228,7 @@ class Currency
         return $this;
     }
 
-    public static function getAllTypes(): array
+    public static function getAvailableTypes(): array
     {
         // @todo translate for example using symfony/translation
         return [
@@ -238,6 +238,15 @@ class Currency
     }
 
     public static function getAllStatuses(): array
+    {
+        // @todo translate for example using symfony/translation
+        return [
+            self::STATUS_ACTIVE => 'Active',
+            self::STATUS_INACTIVE => 'Inactive',
+        ];
+    }
+
+    public static function getAvailableStatuses(): array
     {
         // @todo translate for example using symfony/translation
         return [

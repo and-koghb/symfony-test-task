@@ -22,7 +22,7 @@ class ProductFixtures extends Fixture implements FixtureGroupInterface
             return;
         }
 
-        $products = [
+        $productsData = [
             [
                 'name' => 'iPhone',
                 'price' => 100,
@@ -86,7 +86,7 @@ class ProductFixtures extends Fixture implements FixtureGroupInterface
             ],
         ];
 
-        foreach ($products as $productData) {
+        foreach ($productsData as $productData) {
             $user = $manager->getRepository(User::class)->findOneBy(['email' => $productData['user_email']]);
             if ($user) {
                 $product = new Product();

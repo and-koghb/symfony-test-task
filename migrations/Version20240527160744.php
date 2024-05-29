@@ -18,6 +18,7 @@ final class Version20240527160744 extends AbstractMigration
     {
         if (!$schema->hasTable('products')) {
             $table = $schema->createTable('products');
+
             $table->addColumn('id', 'bigint', ['autoincrement' => true]);
             $table->addColumn('name', 'string', ['length' => 255]);
             $table->addColumn('price', 'decimal', ['precision' => 12, 'scale' => 2]);
@@ -26,6 +27,7 @@ final class Version20240527160744 extends AbstractMigration
             $table->addColumn('status', 'smallint');
             $table->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP']);
             $table->addColumn('updated_at', 'datetime', ['notnull' => false]);
+
             $table->setPrimaryKey(['id']);
             $table->addIndex(['name']);
             $table->addIndex(['price']);

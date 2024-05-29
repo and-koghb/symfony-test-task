@@ -29,7 +29,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
             return;
         }
 
-        $users = [
+        $usersData = [
             [
                 'firstname' => 'John',
                 'lastname' => 'Doe',
@@ -65,7 +65,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
             ],
         ];
 
-        foreach ($users as $userData) {
+        foreach ($usersData as $userData) {
             $user = new User();
             $user->setFirstname($userData['firstname']);
             $user->setLastname($userData['lastname']);

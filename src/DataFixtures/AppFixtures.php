@@ -19,6 +19,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
             CurrencyFixtures::class,
             UserFixtures::class,
             ProductFixtures::class,
+            CouponFixtures::class,
         ];
     }
 }

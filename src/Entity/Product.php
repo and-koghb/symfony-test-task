@@ -140,4 +140,14 @@ class Product
             self::STATUS_PENDING => 'Pending',
         ];
     }
+
+    public static function getAvailableStatuses(): array
+    {
+        // @todo translate for example using symfony/translation
+        return [
+            self::STATUS_ACTIVE => 'Active',
+            self::STATUS_INACTIVE => 'Inactive',
+            self::STATUS_PENDING => 'Pending',
+        ];
+    }
 }
