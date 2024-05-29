@@ -228,6 +228,15 @@ class Currency
         return $this;
     }
 
+    public static function getAllTypes(): array
+    {
+        // @todo translate for example using symfony/translation
+        return [
+            self::TYPE_NORMAL => 'Normal',
+            self::TYPE_CRYPTO => 'Crypto',
+        ];
+    }
+
     public static function getAvailableTypes(): array
     {
         // @todo translate for example using symfony/translation
