@@ -36,6 +36,7 @@ install:
 	${DC_RUN} composer install
 	${DC_RUN} php bin/console doctrine:migrations:migrate
 	${DC_RUN} php bin/console doctrine:fixtures:load --group=test-task --append
+	${DC_RUN} php bin/phpunit tests/
 
 success-message:
 	@echo "You can now access the application at http://localhost:8337"

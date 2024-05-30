@@ -76,6 +76,8 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.6",
-        "symfony/maker-bundle": "^1.59"
+        "phpunit/phpunit": "^11.1",
+        "symfony/maker-bundle": "^1.59",
+        "symfony/phpunit-bridge": "^7.0"
     }
 }
