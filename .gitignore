@@ -10,8 +10,5 @@
 
 .phpunit.result.cache
 /phpunit.xml
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
+.phpunit.cache/test-results
+phpunit.xml.dist.bak
