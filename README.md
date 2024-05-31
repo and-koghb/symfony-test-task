@@ -1,3 +1,51 @@
+# What I did
+
+## Used PostgreSQL as a database.
+
+## Created migration classes to create tables `currencies`, `users`, `products`, `coupons`. Though we might use some bundle for currencies.
+
+### A user may have base currency, but every product also has its currency.
+### Products belong to users.
+### A coupon may belong to a user or be common for all users (eg a promotion by the system).
+
+## Created entities with necessary relations for tables listed above.
+
+## Created fixture classes to insert some dummy data into tables for testing.
+
+## Created BaseController for common methods between all controllers and put there a validation method.
+
+## Created 2 validation request classes, the second extends the first as only the difference is one property of body. Later, if it's necessary, they can be separated. We also can add validation groups to used constraints to keep their working order, because Symfony doesn't use the order they're listed above the field in.
+
+## Created 3 custom constraints for validation.
+
+### Product should be active and should belong to an active user who has verified his/her email address.
+### Coupon should have valid status and belong to the same user whom the product belongs to or be common for all users.
+### To validate tax number and get tax rates I used bundle "ibericode/vat-bundle". They have a constraint to check tax number existence, I created a custom constraint which checks only the tax number format. That's more comfortable to use for our testing purposes. An alternative way would be storing data in our database and write all the logic customly, but the bundle is enough flexible and updates its data regularly, so think better to use it for now.
+
+## Created 5 service classes (which are used inside each other and outside of them) to separate business logic there.
+
+### To calculate discount percent for the coupon.
+### To get a product with its currency.
+### To calculate tax rate based on tax number.
+### To calculate product price based on product ID, coupon code and tax number.
+### To make a purchase.
+
+## The task says that there are classes `PaypalPaymentProcessor` and `StripePaymentProcessor` which should be used on purchase and won't be modified, but those classes are actually missing from the project probably by a mistake. So I left that part of the code and just return success message in the according endoint response.
+
+## Kept payment methods in some config class, but a better way could be storing of processors in db and having a status column for them, that admins can turn on/off necessary processor from admin panel immediately without asking programmers to make changes in codes. Also by that way it'll be easy to list available payment methods with their proper names and logos.
+
+## Wrote just 1 test class for demonstration.
+
+## Didn't translate error and success messages due to time.
+
+## Added @todo comments to some places of codes where they could be improved but haven't been done due to time.
+
+## I did refactoring during the development, so if you check pull requests separately and don't love some codes, please check also their final looks and places.
+
+-----------------------------------------------
+
+# Task
+
 # Написать Symfony REST-приложение для расчета цены продукта и проведения оплаты
 
 Необходимо реализовать 2 эндпоинта:
