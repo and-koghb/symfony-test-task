@@ -10,7 +10,7 @@
 
 ## Created entities with necessary relations for tables listed above.
 
-## Created fixture classes to insert some dummy data into tables for testing.
+## Created fixture classes under group `test-task` to insert some dummy data into tables for testing.
 
 ## Created BaseController for common methods between all controllers and put there a validation method.
 
@@ -39,6 +39,8 @@
 ## Didn't translate error and success messages due to time.
 
 ## Added @todo comments to some places of codes where they could be improved but haven't been done due to time.
+
+## Added necessary commands to Makefile so you just will need to run `make init` to make the project working (there might be necessity to enter 'yes' for migrations).
 
 ## I did refactoring during the development, so if you check pull requests separately and don't love some codes, please check also their final looks and places.
 
