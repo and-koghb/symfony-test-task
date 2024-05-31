@@ -38,7 +38,7 @@ class VisibleProductValidator extends ConstraintValidator
         $queryBuilder
             ->select('p', 'u')
             ->from(Product::class, 'p')
-            ->leftJoin('p.user', 'u')
+            ->join('p.user', 'u')
             ->where('p.id = :productId')
             ->andWhere('p.status = :productStatus')
             ->andWhere('u.status = :userStatus')
