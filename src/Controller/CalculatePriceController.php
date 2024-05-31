@@ -5,17 +5,18 @@ namespace App\Controller;
 use App\DTO\CalculatePriceRequest;
 use App\Form\CalculatePriceType;
 use App\Service\PriceCalculatorService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class CalculatePriceController extends AbstractController
+class CalculatePriceController extends BaseController
 {
     private PriceCalculatorService $priceCalculatorService;
 
-    public function __construct(PriceCalculatorService $priceCalculatorService)
+    public function __construct(ValidatorInterface $validator, PriceCalculatorService $priceCalculatorService)
     {
+        parent::__construct($validator);
         $this->priceCalculatorService = $priceCalculatorService;
     }
 
@@ -28,9 +29,9 @@ class CalculatePriceController extends AbstractController
         $form = $this->createForm(CalculatePriceType::class, $calculatePriceRequest);
         $form->submit($data);
 
-        $errors = $this->priceCalculatorService->validate($calculatePriceRequest);
-        if (!empty($errors)) {
-            return $this->json(['errors' => $errors], 400);
+        $validationResponse = $this->validateRequest($calculatePriceRequest);
+        if ($validationResponse) {
+            return $validationResponse;
         }
 
         $result = $this->priceCalculatorService->calculate($calculatePriceRequest);
