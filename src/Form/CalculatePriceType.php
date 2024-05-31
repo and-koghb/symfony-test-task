@@ -16,7 +16,7 @@ class CalculatePriceType extends AbstractType
         $builder
             ->add('product', IntegerType::class)
             ->add('taxNumber', TextType::class)
-            ->add('couponCode', TextType::class);
+            ->add('couponCode', TextType::class, ['required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

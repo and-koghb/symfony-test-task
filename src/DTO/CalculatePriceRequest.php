@@ -28,6 +28,7 @@ class CalculatePriceRequest
     #[VatNumberFormat]
     public $taxNumber;
 
+    // @todo add validation groups to keep constraint orders
     #[Assert\Type(type: 'string', message: 'The coupon code must be a string.')]
     #[Assert\Length(
         min: 4,
